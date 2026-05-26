@@ -1,0 +1,23 @@
+# ResVSS-UNet config
+architecture_name: resvss_unet
+
+# Model name
+name: resvss_unet
+
+# I/O
+in_channels: ${in_channels}
+out_channels: ${out_channels}
+# Image Size
+image_size: ${image_size}
+
+# Number of VSS blocks
+# Encoder
+encoder: ResNet34
+# Decoder
+depths_decoder: [2,2,2,2]
+
+# Drop path rate
+drop_path_rate: 0.2
+
+# Pretrained ckpt
+pretrained_ckpt: vmamba_small_e238_ema.pth

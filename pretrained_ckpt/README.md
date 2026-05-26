@@ -1,0 +1,1 @@
+To download the weights used by ResVSS-UNet you could visit [VM-UNet](https://github.com/JCruan519/VM-UNet).
