@@ -1,13 +1,13 @@
 # configs/config.yaml
 defaults:
-  - model: unet
+  - model: resvss_unet
   - _self_
 
-# Dataset
+# I/O
+batch: 8
 in_channels: 3
 out_channels: 1
 image_size: 224
-batch: 8
 
 # Device
 device: cuda
@@ -16,12 +16,12 @@ device: cuda
 seed: 42
 
 # Pretrained weights
-use_pretrained_ckpt: False
+use_pretrained_ckpt: True
 
 # Paths group
 paths:
   # repo root when running scripts (Hydra may chdir; we keep chdir false so cwd stays stable)
-  repo_root: ./
+  repo_root: .
   pretrained_ckpt: ${paths.repo_root}/pretrained_ckpt/${model.pretrained_ckpt}
   runs_dir: ${paths.repo_root}/runs
 

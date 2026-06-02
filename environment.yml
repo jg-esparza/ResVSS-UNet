@@ -1,12 +1,11 @@
 name: resvss_unet
 channels:
   - conda-forge
-  - nvidia
 
 dependencies:
   - python=3.11
-  - cuda-toolkit=12.4
   - pip
+
   - pip:
       # Pytorch
       - torch==2.4.1+cu124
@@ -23,3 +22,6 @@ dependencies:
       - regex==2026.2.28
       - tokenizers==0.22.2
       - transformers==4.56.0
+      # CUDA extension packages
+      - causal-conv1d==1.6.1 
+      - mamba_ssm==2.2.4

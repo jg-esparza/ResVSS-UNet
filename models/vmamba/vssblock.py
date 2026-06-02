@@ -1,0 +1,27 @@
+import torch
+from functools import partial
+from typing import Callable
+
+from torch.nn import LayerNorm, Module
+from timm.layers import DropPath
+
+from models.vmamba.ss2d import SS2D
+
+class VSSBlock(Module):
+    def __init__(
+            self,
+            hidden_dim: int = 0,
+            drop_path: float = 0,
+            norm_layer: Callable[..., Module] = partial(LayerNorm, eps=1e-6),
+            attn_drop_rate: float = 0,
+            d_state: int = 16,
+            **kwargs,
+    ):
+        super().__init__()
+        self.ln_1 = norm_layer(hidden_dim)
+        self.self_attention = SS2D(d_model=hidden_dim, dropout=attn_drop_rate, d_state=d_state, **kwargs)
+        self.drop_path = DropPath(drop_path)
+
+    def forward(self, input_vss_block: torch.Tensor):
+        x = input_vss_block + self.drop_path(self.self_attention(self.ln_1(input_vss_block)))
+        return x

@@ -1,19 +1,21 @@
 # ResVSS-UNet config
-architecture_name: resvss_unet
 
 # Model name
 name: resvss_unet
 
 # I/O
-in_channels: ${in_channels}
 out_channels: ${out_channels}
-# Image Size
-image_size: ${image_size}
 
-# Number of VSS blocks
 # Encoder
 encoder: ResNet34
+
+#Patches
+enc_channels: [64, 64, 128, 256, 512]
+dims: [96, 192, 384, 768]
+patch_size: 2
+
 # Decoder
+dims_decoder: [768, 384, 192, 96]
 depths_decoder: [2,2,2,2]
 
 # Drop path rate

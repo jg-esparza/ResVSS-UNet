@@ -1,7 +1,5 @@
 # ResVSS-UNet
 
-(Under construction)
-
 This is the official code repository for "ResVSS-UNet: A ResNet-Vision State Space Decoder for Efficient Medical Image Segmentation". 
 
 ## Abstract
@@ -17,9 +15,9 @@ Experimental results demonstrate that ResVSS-UNet achieves competitive performan
 
 ### Requirements
 
-- Linux
+- Ubuntu-24.04
 - NVIDIA GPU
-- Conda
+- CUDA 12.0
 
 ### Install environment
 
@@ -29,12 +27,16 @@ conda activate resvss_unet
 ```
 
 ## Model Summary
+
+Display model summary from `torchinfo`.
 ```
 python main.py
 ```
 
 ## Prepare the pre_trained weights
-The weights used by ResVSS-UNet could be downloaded from [VM-UNet](https://github.com/JCruan519/VM-UNet). After that, the pre-trained weights should be stored in './pretrained_weights/'.
+The weights used by ResVSS-UNet could be downloaded from [VM-UNet](https://github.com/JCruan519/VM-UNet). 
+- The pre-trained weights should be stored in `./pretrained_weights/`.
+- Set `use_pretrained_ckpt: True` in `config.yaml` file. 
 
 ## Acknowledgments
 
